@@ -1,0 +1,13 @@
+<div>
+    <b>@ContentChidren (descendants false)</b>
+    <ng-template ngFor let-ville [ngForOf]="topVilles">
+        <br>{{ ville.villeId }} - {{ ville.villeName }}
+    </ng-template>
+</div>
+
+<div>
+    <b>@ContentChidren (descendants true)</b>
+    <ng-template ngFor let-ville [ngForOf]="allVilles">
+        <br>{{ ville.villeId }} - {{ ville.villeName }}
+    </ng-template>
+</div>

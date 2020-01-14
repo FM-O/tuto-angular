@@ -1,0 +1,12 @@
+.app-container {
+    padding: 15px;
+    border: 1px solid black;
+}
+
+input {
+    max-width: 200px;
+}
+
+button {
+    margin-top: 15px;
+}

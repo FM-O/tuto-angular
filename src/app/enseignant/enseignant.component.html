@@ -1,0 +1,11 @@
+<div class="app-container">
+    <h1>Bonjour je suis l'enseignant: <span class="bold">{{ nomEnseignant }}</span></h1>
+
+    <p>Question posée à l'étudiant: {{ question }}</p>
+
+    <app-etudiant [questionEnseignant]="question" (answerEvent)="saveData($event)"></app-etudiant>
+
+    <p>Réponse attendue: {{ reponse }}</p>
+    <p>Réponse de l'étudiant: {{ reponseEtudiant }}</p>
+    <p>Bonne réponse ? {{ isAnswerCorrect }}</p>
+</div>

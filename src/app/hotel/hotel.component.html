@@ -1,0 +1,44 @@
+<h1>{{ hotelName }}</h1>
+<p>
+    Nous avons visité l'hôtel: {{ hotelName }} de {{ hotelLocation }}.
+    C'est un hôtel {{ hotelStars }} étoile(s).
+</p>
+<p>L'hôtel compte actuellement {{ getNombreResidents() }} visiteur(s).</p>
+<p>Le nom de l'hôtel est <span [innerHTML]="hotelName"></span> (property binding)</p>
+
+<h2>Réservation</h2>
+<p>{{ message }}</p>
+
+<div [class.my-class]="isYellow">
+    <div class="form-group">
+        <label for="client-name">Votre nom:</label>
+        <input type="text"
+               class="form-control"
+               name="clientName" 
+               id="client-name"
+               (input)="onNameTyping($event)" />
+    </div>
+    
+    <p>Votre nom: {{ clientName }}</p>
+    
+    <button [disabled]="isReserved"
+            (click)="onReservation()"
+            class="btn btn-info">
+        Réserver
+    </button>
+</div>
+
+<div>
+    <h2 [style.font-size.em]="isFontBig ? 2 : 1">----- ADMINISTRATION -----</h2>
+    <button class="btn btn-danger" (click)="isFontBig = !isFontBig">Changer la taille de l'intitulé</button>
+    <div class="form-group">
+        <label for="clients-number">Nombre de personnes dans l'hôtel:</label>
+        <input type="text"
+            class="form-control"
+            name="clientsNumber" 
+            id="clients-number"
+            [(ngModel)]="residentNumber" />
+    </div>
+    <p>Nombre de résidents dans l'hôtel: {{ residentNumber }}</p>
+    <button class="btn btn-warning" (click)="isYellow = !isYellow;">Client premium</button>
+</div>

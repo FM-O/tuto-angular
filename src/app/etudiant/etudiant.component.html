@@ -1,0 +1,8 @@
+<div class="app-container">
+    <p>Nom de l'étudiant: {{ nomEtudiant }}</p>
+    <p>Question de l'enseignant: {{ questionEnseignant }}</p>
+    <input class="form-control" type="text" (input)="reponseSaisie=$event.target.value" />
+    <button class="btn btn-info" (click)="addReponse()">
+        Envoyer la réponse
+    </button>
+</div>

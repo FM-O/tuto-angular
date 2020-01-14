@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+                <div class="form-group">
+                    <label for="userName">Nom d'utilisateur</label>
+                    <input type="text" 
+                            ngModel
+                            name="userName"
+                            id="userName"
+                            class="form-control" />
+                    <label for="userEmail">Email</label>
+                    <input type="text"
+                            ngModel
+                            name="userMail"
+                            id="userMail"
+                            class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="ville">Votre ville</label>
+                    <select ngModel
+                            name="ville"
+                            id="ville"
+                            class="form-control">
+                        <option value="P">Paris</option>
+                        <option value="M">Moscow</option>
+                        <option value="NY">New York</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Submit</button>
+                    <button type="button" 
+                            class="btn btn-danger"
+                            (click)="resetUserForm(userForm)">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Formulaire Select Multi-options</h3>
+            <h4>Candidature instantanée</h4>
+            <p *ngIf="isValidFormSubmitted" [ngClass]="'success'">Le formulaire est bien validé.</p>
+
+            <form #userForm="ngForm" (ngSubmit)="onFormSubmit2(userForm)">
+                <div class="form-group">
+                    <label for="profile">Choisir un profile:</label>
+                    <select class="form-control"
+                            id="profile"
+                            [(ngModel)]="user.profile"
+                            name="profile"
+                            required
+                            #profile="ngModel">
+                        <option [ngValue]="null" disabled>Sélectionner une fonction:</option>
+                        <option *ngFor="let prf of allProfiles" [ngValue]="prf">
+                            {{ prf.prName }}
+                        </option>
+                    </select>
+                    <div *ngIf="profile.invalid && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">Profil obligatoire.</div>
+                </div>
+                <div class="form-group">
+                    <label for="technologies">Choisir les technologies:</label>
+                    <select class="form-control"
+                            multiple
+                            id="technologies"
+                            [compareWith]="compareTech"
+                            [ngModel]="user.technologies"
+                            name="selectedTechs"
+                            required
+                            #selectedTechs="ngModel">
+                        <option *ngFor="let tech of allTechnologies" [ngValue]="tech">
+                            {{ tech.techname }}
+                        </option>
+                    </select>
+                    <div *ngIf="selectedTechs.invalid && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">Il faut choisir au moins une technologie.</div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Votre nom:</label>
+                    <input type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            [ngModel]="user.userName"
+                            required
+                            #name="ngModel" />
+                    <div *ngIf="name.invalid && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">Nom obligatoire.</div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info">Valider</button>
+                    <button class="btn btn-warning" type="button" (click)="setDefaultValues()">Valeurs par défaut</button>
+                    <button class="btn btn-danger" type="button" (click)="resetForm(userForm)">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

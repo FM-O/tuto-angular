@@ -1,0 +1,10 @@
+<p>Nom: {{ nomEmploye }}</p>
+<p>Date d'entrée: {{ dateEntree }}</p>
+<p>Compétences et technologies: {{ technologies }}</p>
+
+<adresse style="background-color: coral; display:block;">
+    <ville villeId="1" villeName="Marseille" *ngIf="homeTown"></ville>
+    <ville villeId="2" villeName="Paris" *ngIf="!homeTown"></ville>
+</adresse>
+
+<button class="btn btn-primary" (click)="onChangeCity()">Changer de lieu de travail</button>

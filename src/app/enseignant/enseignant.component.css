@@ -1,0 +1,12 @@
+.app-container {
+    padding: 15px;
+    max-width: 450px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+.bold {
+    font-weight: 700;
+}
